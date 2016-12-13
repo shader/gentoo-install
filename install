@@ -14,6 +14,10 @@ cp -R . /mnt/gentoo/root/gentoo-install
 
 ./stage3
 . ./chroot
+
+# our scripts should be located in the /root/gentoo-install directory; continue from there
+cd /root/gentoo-install
+
 ./portage-snapshot
 ./kernel-prep
 ./emerge-prereqs
