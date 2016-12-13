@@ -5,4 +5,7 @@ DEST=${2:-/mnt/gentoo}
 
 echo "Importing zpool ${POOL} with alternate root ${DEST}"
 
-zpool import -f ${POOL} -R ${DEST} -c /tmp/zpool.cache
+zpool import -f ${POOL} -R ${DEST}
+
+# create a new cachefile
+zpool set cachefile=/tmp/zpool.cache ${POOL}
