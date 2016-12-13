@@ -1,0 +1,8 @@
+#!/bin/bash
+
+POOL=${1:-tank}
+DEST=${2:-/mnt/gentoo}
+
+echo "Importing zpool ${POOL} with alternate root ${DEST}"
+
+zpool import -f ${POOL} -R ${DEST}

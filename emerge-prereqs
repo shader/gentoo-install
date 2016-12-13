@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Install genkernel
+emerge sys-kernel/genkernel
+
+# Install sources
+emerge sys-kernel/gentoo-sources
+
+# Install gptfdisk
+emerge sys-apps/gptfdisk
+
+# Install GRUB2
+echo "sys-boot/grub:2 libzfs" >> /etc/portage/package.use/zfs
+echo "sys-boot/grub:2 ~amd64" >> /etc/portage/package.accept_keywords
+emerge sys-boot/grub:2

@@ -17,8 +17,8 @@ echo "Setting up ZFS pool named ${POOL} on device ${DEV}"
 zpool create -f -o ashift=12 -o cachefile=/tmp/zpool.cache -O normalization=formD -m none -R /mnt/gentoo -d -o feature@async_destroy=enabled -o feature@empty_bpobj=enabled -o feature@lz4_compress=enabled -o feature@spacemap_histogram=enabled -o feature@enabled_txg=enabled -o feature@extensible_dataset=enabled -o feature@bookmarks=enabled $POOL $DEV
 
 # Workaround 0.6.4 regression
-zfs umount "/mnt/gentoo/${POOL}"
-rmdir "/mnt/gentoo/${POOL}"
+zfs umount "/mnt/gentoo/${POOL}" 2>/dev/null
+rmdir "/mnt/gentoo/${POOL}" 2>/dev/null
 
 # Create rootfs
 zfs create -o mountpoint=none ${POOL}/ROOT

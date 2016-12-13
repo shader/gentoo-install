@@ -1,13 +1,24 @@
 #!/bin/bash
 
-echo "Beginning automated gentoo installation"
+echo "Beginning automated gentoo installation..."
 
-./zfs-prep "$@"
+# pool name is $1 or "tank"
+POOL=${1:-tank}
+# target device is $2 or "/dev/sda"
+DEV=${2:-/dev/sda}
+
+./zfs-prep $POOL $DEV 2>log
+
+#copy scripts for future use...
+cp -R . /mnt/gentoo/root/gentoo-install
+
 ./stage3
 . ./chroot
 ./portage-snapshot
 ./kernel-prep
+./emerge-prereqs
 ./zfs-install
-./grub-install
+./boot-partition $DEV
+./grub-install $DEV
 ./kernel-rebuild
 ./fstab-update

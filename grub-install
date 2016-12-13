@@ -1,21 +1,7 @@
 #!/bin/bash
 
 echo "Performing boot setup with grub..."
-
-# Install gptfdisk
-emerge sys-apps/gptfdisk
-
-# Make BIOS Boot Partition (make certain /dev/sda is your actual block device!)
-sgdisk --new=2:48:2047 --typecode=2:EF02 --change-name=2:"BIOS boot partition" $DEV
-
-# Flush the page cache to ensure GRUB2 sees the latest disk content
-echo 1 > /proc/sys/vm/drop_caches
-
-# Install GRUB2
-echo "sys-boot/grub:2 libzfs" >> /etc/portage/package.use/zfs
-echo "sys-boot/grub:2 ~amd64" >> /etc/portage/package.accept_keywords
-emerge sys-boot/grub:2
-touch /etc/mtab
+DEV=${1:-/dev/sda}
 
 # sys-fs/zfs-kmod and sys-fs/zfs switched to a proposed stable /dev/zfs API in
 # 0.6.5.3. This breaks GRUB2 if the userland expects the new ABI and the kernel
@@ -36,5 +22,5 @@ touch /etc/mtab
 # Install GRUB2 to disk (make certain /dev/sda is your actual block device!)
 grub-install $DEV
 
-# We must create an empty configuration file so genkernel fines the right one.
+# We must create an empty configuration file so genkernel finds the right one.
 touch /boot/grub/grub.cfg

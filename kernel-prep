@@ -1,12 +1,6 @@
 #!/bin/bash
 echo "Building kernel and modules for the first time..."
 
-# Install genkernel
-emerge sys-kernel/genkernel
-
-# Install sources
-emerge sys-kernel/gentoo-sources
-
 # Build initial kernel (required for checks in sys-kernel/spl and sys-fs/zfs)
 # FIXME: Make genkernel support modules_prepare
 genkernel kernel --no-clean --no-mountboot
