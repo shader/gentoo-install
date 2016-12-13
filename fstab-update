@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Cleaning fstab file..."
+# Comment the BOOT, ROOT and SWAP lines in /etc/fstab
+sed -i -e "s/\(.*\)\/\(BOOT\|ROOT\|SWAP\)\(.*\)/\#\1\/\2\3/g" /etc/fstab

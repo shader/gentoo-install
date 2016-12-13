@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "Beginning automated gentoo installation"
+
+./zfs-prep "$@"
+./stage3
+. ./chroot
+./portage-snapshot
+./kernel-prep
+./zfs-install
+./grub-install
+./kernel-rebuild
+./fstab-update

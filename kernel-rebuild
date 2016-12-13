@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "Rebuilding kernel..."
+
+# Build kernel and initramfs
+genkernel all --no-clean --no-mountboot --zfs --bootloader=grub2 --callback="emerge @module-rebuild"
+
+# If you needed to install the old tools, you should run the following to
+# install the new tools again and update the initramfs archive.
+## emerge -1v --nodeps sys-fs/zfs
+## genkernel initramfs --no-clean --no-mountboot --zfs

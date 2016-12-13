@@ -1,0 +1,50 @@
+#!/bin/bash
+# Based on ryao's zfs-install directions: https://github.com/ryao/zfs-overlay/blob/master/zfs-install
+# Boot Linux Live CD with ZFS support
+# fearedbliss maintains a variant of System Rescue CD that is highly recommended:
+# https://wiki.gentoo.org/wiki/User:Fearedbliss
+# Instruction for a USB key version
+# http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick
+
+# pool name is $1 or "tank"
+POOL=${1:-tank}
+# target device is $2 or "/dev/sda"
+DEV=${2:-/dev/sda}
+
+echo "Setting up ZFS pool named ${POOL} on device ${DEV}"
+
+# Create pool
+zpool create -f -o ashift=12 -o cachefile=/tmp/zpool.cache -O normalization=formD -m none -R /mnt/gentoo -d -o feature@async_destroy=enabled -o feature@empty_bpobj=enabled -o feature@lz4_compress=enabled -o feature@spacemap_histogram=enabled -o feature@enabled_txg=enabled -o feature@extensible_dataset=enabled -o feature@bookmarks=enabled $POOL $DEV
+
+# Workaround 0.6.4 regression
+zfs umount "/mnt/gentoo/${POOL}"
+rmdir "/mnt/gentoo/${POOL}"
+
+# Create rootfs
+zfs create -o mountpoint=none ${POOL}/ROOT
+zfs create -o mountpoint=/ ${POOL}/ROOT/gentoo
+
+# Create home directories
+zfs create -o mountpoint=/home ${POOL}/HOME
+zfs create -o mountpoint=/root ${POOL}/HOME/root
+
+# Create portage directories
+zfs create -o mountpoint=none -o setuid=off ${POOL}/GENTOO
+zfs create -o mountpoint=/usr/portage -o atime=off ${POOL}/GENTOO/portage
+zfs create -o mountpoint=/usr/portage/distfiles ${POOL}/GENTOO/distfiles
+
+# Create portage build directory
+zfs create -o mountpoint=/var/tmp/portage -o compression=lz4 -o sync=disabled ${POOL}/GENTOO/build-dir
+
+# Create optional packages directory
+zfs create -o mountpoint=/usr/portage/packages ${POOL}/GENTOO/packages
+
+# Create optional ccache directory
+zfs create -o mountpoint=/var/tmp/ccache -o compression=lz4 ${POOL}/GENTOO/ccache
+
+# Set bootfs
+zpool set bootfs=${POOL}/ROOT/gentoo ${POOL}
+
+#
+# Note: Integrate `zfs create -o mountpoint=/home/user ${POOL}/HOME/user` into procedure
+#

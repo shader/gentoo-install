@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Fetching latest portage snapshot..."
+
+# Get portage snapshot (use OSUOSL mirror because it is usually fast)
+env GENTOO_MIRRORS="http://gentoo.osuosl.org" emerge-webrsync

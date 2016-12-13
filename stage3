@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Installing gentoo stage3"
+
+# Download stage3
+wget 'ftp://gentoo.osuosl.org/pub/gentoo/releases/amd64/autobuilds/current-stage3-amd64/stage3-amd64-[0-9]*.tar.bz2'
+
+# Extract stage3
+tar -xvjpf stage3-amd64-*.tar.bz2 -C /mnt/gentoo
