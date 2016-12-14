@@ -1,0 +1,3 @@
+>=sys-fs/udev-init-scripts-28
+>=sys-libs/ncurses-6.0
+sys-libs/ncurses:5

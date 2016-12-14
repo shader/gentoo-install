@@ -1,0 +1,113 @@
+sys-boot/grub:2 libzfs
+x11-wm/stumpwm sbcl emacs
+dev-libs/openssl -bindist
+net-misc/openssh -bindist
+gnome-base/gnome-session branding
+>=media-plugins/gst-plugins-meta-1.0-r2 ffmpeg
+x11-terms/rxvt-unicode xft 256-color
+app-editors/emacs xft source gnutls libxml2
+www-client/firefox ipc system-icu system-cairo system-jpg system-sqlite
+dev-db/sqlite secure-delete
+app-text/texlive dvipdfm graphics png pstricks doc dvi2tty science truetype xetex
+sys-process/cronie anacron
+app-emacs/org-mode contrib
+
+# required by www-client/chromium-38.0.2125.66
+# required by chromium (argument)
+>=sys-libs/zlib-1.2.8-r1 minizip
+
+# required by media-gfx/graphviz-2.36.0
+# required by media-gfx/pydot-1.0.28-r2
+# required by dev-tex/dot2tex-2.8.7-r1
+# required by dev-tex/dot2texi-3.0
+# required by app-text/texlive-2013[graphics]
+# required by texlive (argument)
+>=media-libs/gd-2.0.35-r4 fontconfig
+
+>=app-admin/consul-0.4.1::ultrabug web
+
+# required by dev-lang/rust:nightly (argument)
+=sys-devel/llvm-3.5.0 multitarget
+
+# required by dev-qt/qtcore-5.5.1::gentoo
+# required by dev-qt/qtprintsupport-5.5.1::gentoo
+# required by net-misc/dropbox-3.6.8::gentoo[X]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libpcre-8.38 pcre16
+# required by dev-lang/ruby-2.3.0::gentoo
+# required by dev-ruby/minitest-5.8.3::gentoo[ruby_targets_ruby23]
+>=dev-ruby/power_assert-0.2.7 ruby_targets_ruby23
+# required by dev-qt/qtwebkit-5.5.1::gentoo
+# required by net-misc/dropbox-3.6.8::gentoo[X]
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtcore-5.5.1 icu
+# required by dev-lang/ruby-2.3.0::gentoo
+# required by dev-ruby/test-unit-3.1.5-r1::gentoo[ruby_targets_ruby23]
+>=dev-ruby/minitest-5.8.3 ruby_targets_ruby23
+# required by dev-texlive/texlive-xetex-2015::gentoo
+# required by app-text/texlive-2015::gentoo[xetex]
+# required by @selected
+# required by @world (argument)
+>=app-text/texlive-core-2015 xetex
+# required by dev-lang/ruby-2.3.0::gentoo[rdoc]
+# required by dev-ruby/minitest-5.8.3::gentoo[ruby_targets_ruby23]
+>=dev-ruby/rdoc-4.2.1 ruby_targets_ruby23
+# required by dev-lang/ruby-2.3.0::gentoo
+# required by dev-ruby/minitest-5.8.3::gentoo[ruby_targets_ruby23]
+>=dev-ruby/rake-10.5.0 ruby_targets_ruby23
+# required by www-client/chromium-48.0.2564.41::gentoo[system-ffmpeg]
+# required by @selected
+# required by @world (argument)
+>=media-video/ffmpeg-2.8.4 opus vpx
+# required by dev-qt/qtnetwork-5.5.1::gentoo[ssl]
+# required by net-misc/dropbox-3.6.8::gentoo[X]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/openssl-1.0.2e bindist
+# required by dev-ruby/net-telnet-0.1.1-r1::gentoo[ruby_targets_ruby23,-test]
+# required by dev-lang/ruby-2.3.0::gentoo
+# required by dev-ruby/minitest-5.8.3::gentoo[ruby_targets_ruby23]
+>=virtual/rubygems-11 ruby_targets_ruby23
+# required by dev-ruby/rdoc-4.2.1::gentoo[ruby_targets_ruby23]
+# required by dev-lang/ruby-2.0.0_p648::gentoo[rdoc]
+# required by dev-ruby/mongo-2.0.6::gentoo[ruby_targets_ruby20]
+# required by @selected
+# required by @world (argument)
+>=dev-ruby/json-1.8.3 ruby_targets_ruby23
+# required by virtual/rubygems-11::gentoo[ruby_targets_ruby23]
+# required by dev-ruby/mongo-2.0.6::gentoo[-test,ruby_targets_ruby21]
+# required by @selected
+# required by @world (argument)
+>=dev-ruby/rubygems-2.5.1 ruby_targets_ruby23
+# required by dev-lang/ruby-2.3.0::gentoo
+# required by dev-ruby/minitest-5.8.3::gentoo[ruby_targets_ruby23]
+>=dev-ruby/net-telnet-0.1.1-r1 ruby_targets_ruby23
+# required by dev-lang/ruby-2.3.0::gentoo
+# required by dev-ruby/minitest-5.8.3::gentoo[ruby_targets_ruby23]
+>=dev-ruby/did_you_mean-1.0.0 ruby_targets_ruby23
+# required by www-client/chromium-48.0.2564.41::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libxml2-2.9.3 icu
+# required by dev-ruby/rdoc-4.2.1::gentoo[ruby_targets_ruby23]
+# required by dev-lang/ruby-2.0.0_p648::gentoo[rdoc]
+# required by dev-ruby/mongo-2.0.6::gentoo[ruby_targets_ruby20]
+# required by @selected
+# required by @world (argument)
+>=dev-ruby/racc-1.4.14 ruby_targets_ruby23
+# required by dev-lang/ruby-2.3.0::gentoo
+# required by dev-ruby/minitest-5.8.3::gentoo[ruby_targets_ruby23]
+>=dev-ruby/test-unit-3.1.5-r1 ruby_targets_ruby23
+
+# required by net-misc/dropbox-3.6.8::gentoo[X]
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtnetwork-5.5.1 -bindist
+# required by net-misc/openssh-7.1_p1-r3::gentoo[-libressl,ssl,-static]
+# required by net-misc/sshpass-1.05::gentoo
+# required by app-admin/ansible-2.0.0.1-r2::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/openssl-1.0.2e -bindist
