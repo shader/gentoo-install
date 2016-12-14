@@ -26,3 +26,4 @@ setup/boot-partition $DEV
 setup/grub-install $DEV
 setup/kernel-rebuild
 setup/fstab-update
+setup/emerge-utils
