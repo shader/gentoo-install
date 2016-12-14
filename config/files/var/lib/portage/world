@@ -6,9 +6,7 @@ app-admin/mongo-tools
 app-admin/sudo
 app-admin/syslog-ng
 app-arch/p7zip
-app-arch/rar
 app-arch/sharutils
-app-arch/unrar
 app-doc/doxygen
 app-editors/emacs
 app-emacs/emacs-daemon
