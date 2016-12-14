@@ -7,22 +7,22 @@ POOL=${1:-tank}
 # target device is $2 or "/dev/sda"
 DEV=${2:-/dev/sda}
 
-./zfs-prep $POOL $DEV 2>log
+setup/zfs-prep $POOL $DEV 2>log
 
 #copy scripts for future use...
 cp -R . /mnt/gentoo/root/gentoo-install
 
-./stage3
+setup/stage3
 . ./chroot
 
 # our scripts should be located in the /root/gentoo-install directory; continue from there
 cd /root/gentoo-install
 
-./portage-snapshot
-./kernel-prep
-./emerge-prereqs
-./zfs-install
-./boot-partition $DEV
-./grub-install $DEV
-./kernel-rebuild
-./fstab-update
+setup/portage-snapshot
+setup/kernel-prep
+setup/emerge-prereqs
+setup/zfs-install
+setup/boot-partition $DEV
+setup/grub-install $DEV
+setup/kernel-rebuild
+setup/fstab-update

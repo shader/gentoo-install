@@ -46,5 +46,5 @@ zfs create -o mountpoint=/var/tmp/ccache -o compression=lz4 ${POOL}/GENTOO/ccach
 zpool set bootfs=${POOL}/ROOT/gentoo ${POOL}
 
 #
-# Note: Integrate `zfs create -o mountpoint=/home/user ${POOL}/HOME/user` into procedure
+# Note: Integrate `` into procedure
 #
