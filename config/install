@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for i in `find files -type f | sed s/files//`
+do
+    echo ln -s files${i} $i
+done
