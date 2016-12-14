@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# networking device is first argument or enp0s3
+DEV=${1:-enp0s3}
+
+cd /etc/init.d
+ln -s net.lo net.${DEV}
+
