@@ -27,7 +27,6 @@ app-portage/pfl
 app-shells/zsh
 app-text/aspell
 app-text/dos2unix
-app-text/pandoc
 app-text/texlive
 app-text/wgetpaste
 app-text/zathura
@@ -39,11 +38,9 @@ dev-java/nailgun
 dev-lang/R
 dev-lang/clojure
 dev-lang/lua
-dev-lang/mlton
 dev-lang/python
 dev-lang/python:3.4
 dev-libs/nanomsg
-dev-lisp/clisp
 dev-python/pip
 dev-python/pygtk
 dev-python/tox
