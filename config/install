@@ -2,5 +2,6 @@
 
 for i in `find files -type f | sed s/files//`
 do
-    echo ln -s files${i} $i
+    rm $i
+    cp files${i} $i
 done
