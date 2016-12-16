@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo >>/usr/src/linux/.config "
+# Docker
+CONFIG_IP_NF_TARGET_MASQUERADE=y
+CONFIG_CGROUP_PIDS=y
+CONFIG_CGROUP_HUGETLB=y
+CONFIG_IPVLAN=y
+CONFIG_CGROUP_NET_PRIO=y"
