@@ -1,0 +1,8 @@
+#!/bin/bash
+
+POOL=${1:-tank}
+
+# Swap support
+zfs create -o sync=always -o primarycache=metadata -o secondarycache=none -b 4K -V 8G ${POOL}/swap
+mkswap -f /dev/zvol/${POOL}/swap
+zfs snapshot ${POOL}/swap@install

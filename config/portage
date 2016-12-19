@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Set portage to compile in a CGROUP to minimize lag
+cat << END > /usr/local/sbin/portage-cgroup
+#!/bin/sh
+# $1 must be the portage PID
+
+cgroup=$(mktemp -d --tmpdir=/sys/fs/cgroup/cpu portage-XXXX) &&
+echo $1 > "${cgroup}/tasks" &&
+echo 1 > "${cgroup}/notify_on_release"
+echo 256 > "${cgroup}/cpu.shares"
+END
+
+chmod u+x /usr/local/sbin/portage-cgroup
+echo 'PORTAGE_IONICE_COMMAND="/usr/local/sbin/portage-cgroup \${PID}"' >> /etc/make.conf

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Make recovery snapshot after booting into new install
+zfs snapshot ${POOL}/ROOT/gentoo@install

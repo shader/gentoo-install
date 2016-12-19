@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# ARC tuning - You can configure the RAM that ARC uses in bytes
+echo options zfs zfs_arc_max=536870912 >> /etc/modprobe.d/zfs.conf
