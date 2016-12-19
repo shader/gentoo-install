@@ -6,9 +6,9 @@ rc-update add docker default
 rc-update add syslog-ng default
 rc-update add net.enp0s3 default
 
-rc-update add vboxadd default
-rc-update add vboxadd-service default
-rc-update add vboxadd-11 default
+#rc-update add vboxadd default
+#rc-update add vboxadd-service default
+#rc-update add vboxadd-11 default
 rc-update add virtualbox-guest-additions default
 
 rc-update add cronie default
