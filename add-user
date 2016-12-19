@@ -5,6 +5,6 @@ echo "Creating user ${NAME}"
 
 zfs create -o mountpoint=/home/${NAME} ${POOL}/HOME/${NAME}
 
-useradd ${NAME} -d /home/${NAME} -G wheel
+useradd ${NAME} -d /home/${NAME} -G wheel,audio,video,users,games,docker,vboxsf,vboxguest
 
 passwd ${NAME}
